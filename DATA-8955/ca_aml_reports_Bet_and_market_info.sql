@@ -9,8 +9,8 @@ WITH parlays AS (
            NULL AS selection,
            MAX(l.num_legs) num_legs,
            MAX(l.num_live_legs) num_live_legs
-    FROM ca_aml_monthly_reports.max_vegas_bets_all b
-    LEFT JOIN ca_aml_monthly_reports.max_legs_all l
+    FROM ca_aml_reports.max_vegas_bets_all b
+    LEFT JOIN ca_aml_reports.max_legs_all l
     ON b.id=l.vegas_bet_id
     WHERE b.type in ('parlay','parlay_plus')
     GROUP BY 1, b.type
@@ -30,8 +30,8 @@ WITH parlays AS (
            l.market_selection_name AS selection,
            l.num_legs AS num_legs,
            l.num_live_legs AS num_live_legs
-    FROM ca_aml_monthly_reports.max_vegas_bets_all b
-    LEFT JOIN ca_aml_monthly_reports.max_legs_all l
+    FROM ca_aml_reports.max_vegas_bets_all b
+    LEFT JOIN ca_aml_reports.max_legs_all l
     ON b.id=l.vegas_bet_id
     WHERE b.type='straight'
 )
