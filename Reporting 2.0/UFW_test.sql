@@ -156,7 +156,7 @@ GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16)
         ON w.patron_transaction_id::VARCHAR = a.parent_id AND a.type IN ('payout','rollback')
     LEFT JOIN JACKPOTS_TEST j
         ON a.patron_transaction_id::VARCHAR = j.remote_wallet_transaction_id
-    WHERE a.parent_id IS NOT NULL and j.type = 'win'
+    WHERE a.parent_id IS NOT NULL
 )
 
 , free_wager_metadata AS (
